@@ -60,7 +60,7 @@ void insert(String key,V value)
 			head->value=value;
 			return ;
 		}
-		head=heda->next;
+		head=head->next;
 	}
 	head=buckets[BucketIndex];
 	MapNode<V>* node=new MapNode<V>(key,value);
@@ -81,4 +81,45 @@ int getBucketIndex(String key)
 		currentCoeff=currentCoeff%numBuckets;
 	}
 	return hashcode%numBuckets;
+}
+V remove(String key)
+{
+	int BucketIndex=getBucketIndex(key);
+	MapNode<V> *head=bucket([BucketIndex]);
+	MapNode<V> *prev=NULL;
+	while(head!=NULL)
+	{
+		if(head->key==key)
+		{
+			if(prev==NULL)
+			{
+				Buckets[BucketIndex]=head->next;
+			}
+			else
+			{
+				prev->next=head->next;
+			}
+			V value=head->value;
+			head->next=NULL;//because we used a deconstrucutor so removing all the connections to it
+			delete head;
+			count--;
+
+		}
+		prev=head;
+		head=head->next;
+	}
+}
+int search(String key)
+{
+	int BucketIndex=getBucketIndex[key];
+	MapNode<V>*head=bucket[BucketIndex];
+	while(head!=NULL)
+	{
+		if(head->key==key)
+		{
+			return head->value;
+		}
+		head=head->next;
+	}
+	return -1;
 }
