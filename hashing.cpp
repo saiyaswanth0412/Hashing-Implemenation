@@ -51,7 +51,7 @@ int size()
 }
 void insert(String key,V value)
 {
-	int bucket=getBucketIndex[key];
+	int BucketIndex=getBucketIndex[key];
 	MapNode<V>* head=buckets[BucketIndex];
 	while(head!=NULL)
 	{
