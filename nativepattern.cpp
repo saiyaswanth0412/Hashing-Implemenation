@@ -6,11 +6,12 @@ int main(int argc, char const *argv[])
 	cin>>test_cases;
 	while(test_cases--)
 	{
+		int i,j;
 		string text,pattern;
 		cin>>text>>pattern;
-		for(int i=0;i<=text.length();i++)
+		for( i=0;i<text.length()-pattern.length();i++)
 		{
-			for(int j=0;j<=pattern.length();i++)
+			for( j=0;j<pattern.length();i++)
 			{
 				if(text[i+j]!=pattern[j])
 				{
@@ -20,7 +21,6 @@ int main(int argc, char const *argv[])
 			if(j==pattern.length())
 			{
 				cout<<i<<endl;
-				return 0;
 			}
 		}
 	}
